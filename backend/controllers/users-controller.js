@@ -1,4 +1,4 @@
-
+import { db } from "../database/db.js";
 
 export const getUsers = async (req, res, next) => {
   db.query('SELECT * FROM users', (err, results) => {
