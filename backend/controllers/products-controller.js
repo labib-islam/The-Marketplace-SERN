@@ -35,10 +35,7 @@ export const getProducts = (req, res) => {
 export const getProduct = (req, res) => {
   const q = "SELECT * FROM products WHERE pid=?"
 
-  db.query(q, [req.params.pid], (err, data) => {
-    if (err) return res.json(err)
-    return res.status(200).json(data);
-  })
+  
 }
 
 
