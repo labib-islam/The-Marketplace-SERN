@@ -5,11 +5,12 @@ export const addToCart = (req, res) => {
   const q = "SELECT stock FROM products WHERE pid=?"
   db.query(q, [req.params.pid], (err, data) => {
     if (err) return res.json(err)
+    if (data.length === 0) return res.status(404).json('Product Not Found!')
     if (data[0].stock < req.body.quantity) return res.status(403).json({
       message: 'Stock is limited.',
       data: data[0]
     })
-  
+
     const q = "INSERT INTO carts(`uid`, `pid`, `quantity`) VALUES (?)"
     const values = [
       req.uid,

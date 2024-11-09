@@ -35,6 +35,8 @@ export const login = (req, res) => {
   // Check user
   const q = "SELECT * FROM users WHERE username = ?"
 
+  console.log(req.body)
+
   db.query(q, [req.body.username], (err, data) => {
     if (err) return res.json(err)
     if (data.length === 0) return res.status(404).json('User not found!')

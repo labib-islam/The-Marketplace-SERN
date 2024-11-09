@@ -1,0 +1,116 @@
+
+
+.navbar {
+  height: 100px;
+  
+
+  .top {
+    padding: 0px 30px;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 220px;
+    }
+
+    .cart-box {
+      display: flex;
+      gap: 10px;
+
+      .cart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22px;
+      }
+    }
+
+    
+  }
+
+  .bottom {
+    height: 40%;
+    border: 1px solid black;
+    // border-bottom: 1px solid black;
+    display: flex;
+    // gap: 10px;
+
+    .left {
+      flex: 2;
+      margin: 3px;
+      .search-form {
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        input {
+          flex: 3;
+          padding: 0 10px;
+          border: 2px solid rgb(0, 0, 0);
+          background-color:rgb(255, 255, 255);
+          &:focus {
+            outline: none
+          }
+        }
+        button {
+          flex: 1;
+          background-color: rgb(0, 0, 0);
+          border: none;
+          color: white;
+          display: flex;
+          gap: 10px;
+          padding: 0 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .item-text {
+            color: white;
+          }
+  
+          .item-logo {
+            display: flex;
+            height: 15px;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      .item-box {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        gap: 15px;
+        padding: 0 10px;
+
+        .item-text {
+          color: white;
+          font-size: 0.9em;
+        }
+
+        .item-logo {
+          display: flex;
+          height: 20px;
+          // background-color: beige;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.97 146.09">
+  <defs>
+    <style>
+      .logout-1 {
+        fill: #fff;
+      }
+
+      .logout-1, .logout-2 {
+        stroke-width: 0px;
+      }
+
+      .logout-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path class="logout-2" d="M69.07,34.02v-14H19.52v106.06h49.55v-14h-35.55V34.02h35.55Z"/>
+  <polygon class="logout-1" points="120.23 73.05 105.73 98.16 90.34 98.16 100.99 79.71 84.24 79.71 59.06 79.71 59.06 66.38 84.24 66.38 100.99 66.38 90.34 47.94 105.73 47.94 120.23 73.05"/>
+</svg>

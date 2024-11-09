@@ -1,0 +1,36 @@
+.footer {
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  .left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    a {
+      color: rgb(255, 255, 255);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-underline-offset: 4px;
+    }
+  }
+  .divider {
+    margin: 10px 0;
+    height: 70%;
+    border: 1px solid rgb(255, 255, 255);
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    .social-logo {
+      width: 30px;
+      display: flex;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
