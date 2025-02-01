@@ -5,7 +5,7 @@ import fileUpload from '../middlewares/file-upload.js';
 
 const router = express.Router();
 
-router.post('/new', auth, fileUpload.single('image'), createProduct)
+router.post('/new', auth, fileUpload.array('images', 5), createProduct)
 
 router.get('/', getProducts)
 router.get('/:pid', getProduct)

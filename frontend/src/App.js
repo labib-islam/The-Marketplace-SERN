@@ -12,6 +12,8 @@ import Login from './users/pages/Login';
 import Signup from './users/pages/Signup';
 
 import './style.scss'
+import Dashboard from './users/pages/Dashboard';
+import AddProduct from './products/pages/AddProduct';
 
 const Layout = () => {
   return (
@@ -33,8 +35,16 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
+        path: "/product/new",
+        element: <AddProduct />
+      },
+      {
         path: "/product/:pid",
         element: <ProductItem />
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />
       },
       
     ]

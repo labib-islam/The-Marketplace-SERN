@@ -1,5 +1,9 @@
 
 
+.link {
+  height: 100%;
+}
+
 .navbar {
   height: 100px;
   
@@ -68,6 +72,7 @@
           justify-content: center;
           .item-text {
             color: white;
+            text-decoration: none;
           }
   
           .item-logo {
@@ -100,6 +105,7 @@
         .item-text {
           color: white;
           font-size: 0.9em;
+          text-decoration: none;
         }
 
         .item-logo {

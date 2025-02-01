@@ -11,17 +11,27 @@ import { ReactComponent as Search} from '../../assets/search.svg'
 
 import './Navbar.scss'
 import { AuthContext } from '../context/authContext'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout()
+    navigate("/login")
+  }
 
   return (
     <div className='navbar'>
       <div className='top'>
+        <Link to="/">
         <div className='logo'>
           <Logo />
         </div>
+        </Link>
         <div className='cart-box'>
           <p>Cart</p>
           <div className='cart'>
@@ -45,15 +55,17 @@ const Navbar = () => {
         <div className='right'>
           {
             currentUser &&
-            <div className='item-box'>
-              <p className='item-text'>{currentUser.username}</p>
-              <div className='item-logo'>
-                <User />
+            <Link to="/dashboard" className='link'>
+              <div className='item-box'>
+                <p className='item-text'>{currentUser.username}</p>
+                <div className='item-logo'>
+                  <User />
+                </div>
               </div>
-            </div>
+            </Link>
           }
           
-          <div className='item-box'>
+          <div className='item-box' onClick={handleLogout}>
             <p className='item-text'>LOGOUT</p>
             <div className='item-logo'>
               <Logout />

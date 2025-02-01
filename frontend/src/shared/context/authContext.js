@@ -11,8 +11,8 @@ export const AuthContextProvider = ({children}) => {
     setCurrentUser(res.data)
   }
 
-  const logout = async (inputs) => {
-    const res = await axios.get('/auth/logout')
+  const logout = async () => {
+    await axios.get('/auth/logout')
     setCurrentUser(null)
   }
 

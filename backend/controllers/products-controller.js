@@ -2,22 +2,57 @@ import { db } from "../database/db.js"
 import jwt from 'jsonwebtoken'
 
 export const createProduct = (req, res) => {
-  const q = "INSERT INTO products(`title`, `description`, `price`, `stock`, `image-url`, `uid`) VALUES (?)"
-  const values = [
-    req.body.title,
-    req.body.description,
-    req.body.price,
-    req.body.stock,
-    req.file.path,
-    req.uid
-  ]
 
-  db.query(q, [values], (err, data) => {
-    if (err) return res.json(err)
-    return res.status(200).json({
-      message: 'Product has been created.',
-      data: data[0]
-    });
+  db.beginTransaction((err) => {
+    if (err) return res.status(500).json({ message: "Failed to start transaction." });
+
+    const q = "INSERT INTO products(`title`, `description`, `price`, `stock`, `uid`) VALUES (?)"
+    const values = [
+      req.body.title,
+      req.body.description,
+      req.body.price,
+      req.body.stock,
+      req.uid
+    ]
+
+    db.query(q, [values], (err, data) => {
+      if (err) {
+        return db.rollback(() => {
+          console.error("Error inserting product:", err);
+          res.status(500).json({ message: "Failed to insert product." });
+        })
+      }
+
+      const productId = data.insertId;
+
+      const imageValues = req.files.map(file => [
+        productId, // product_id
+        file.path   // image_url
+      ]);
+
+      const q = "INSERT INTO product_images(`pid`, `imageUrl`) VALUES ?"
+
+      db.query(q, [imageValues], (err, data) => {
+        if (err) {
+          return db.rollback(() => {
+            console.error("Error inserting images:", err);
+            res.status(500).json({ message: "Failed to insert images." });
+          });
+        }
+
+        db.commit((err) => {
+          if (err) {
+            return db.rollback(() => {
+              console.error("Error committing transaction:", err);
+              res.status(500).json({ message: "Failed to commit transaction." });
+            });
+          }
+          return res.status(200).json({
+            message: "Product has been created."
+          });
+        })
+      })
+    })
   })
 }
 

@@ -1,3 +1,5 @@
+@use 'src/variables' as v;
+
 .auth {
   display: flex;
   flex-direction: column;
@@ -20,7 +22,7 @@
       height: 40px;
       padding: 10px;
       border: 1px solid gray;
-      background-color: rgb(224, 224, 224);
+      background-color: v.$formInput;
     }
 
     button {
